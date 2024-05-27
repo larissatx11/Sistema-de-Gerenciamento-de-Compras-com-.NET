@@ -1,0 +1,47 @@
+@model CompraModel
+@{
+    ViewData["Title"] = "Editar Compra";
+}
+
+<div class="d-flex justify-content-center align-items-center">
+  <div class="w-100" style="max-width: 500px;">
+    <div class="text-center mb-4">
+      <h1 class="display-4">Editar Compra</h1>
+    </div>
+
+    <form asp-controller="Compras" asp-action="Alterar" method="post">
+      <input type="hidden" asp-for="Id"/>
+
+      @{
+        var produtos = ViewBag.Produtos as List<ProdutosModel>;
+        if (produtos != null && produtos.Any())
+        {
+          <div class="mb-3 text-start">
+            <label for="produto" class="custom-label">Produto</label>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <select id="produto" asp-for="ProdutoId" class="form-select w-75" asp-items="@(new SelectList(produtos, "Id", "Nome"))">
+                <option value="">Selecione um produto</option>
+              </select>      
+            </div>
+
+             <div class="custom-label">
+              @Html.ValidationMessageFor(model => model.ProdutoId, "", new { @class = "text-danger" })
+             </div>
+
+             <div class="d-flex justify-content-center mt-2">
+              <button type="submit" class="btn btn-primary btn-wide me-2">Alterar</button>
+              <a class="btn btn-secondary btn-wide" asp-controller="Compras" asp-action="Index" role="button">Voltar</a>
+            </div>
+          </div>
+        }
+        else
+        {
+          <div class="d-flex justify-content-center align-items-center flex-column">
+            <p>Nenhum produto disponível. Por favor, adicione um produto para selecionar.</p>
+            <a class="btn btn-secondary btn-wide" asp-controller="Compras" asp-action="Index" role="button">Voltar</a>
+          </div>
+        }
+      }
+    </form>
+  </div>
+</div>

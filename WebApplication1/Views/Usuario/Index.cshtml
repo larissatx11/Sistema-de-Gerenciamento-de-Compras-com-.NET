@@ -1,0 +1,50 @@
+@model List<UsuarioModel>
+@{
+    ViewData["Title"] = "Lista de Usuários";
+}
+<br />
+
+<div class="text-center">
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Informações do Usuário</h1>
+    <div class="container">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (UsuarioModel usuario in Model)
+            {
+                <div class="card mb-3 mx-auto" style="width: 18rem;">
+                    <div class="card-body text-center">
+                        <a href="#" class="text-muted mb-3 d-block"><i class="fa-solid fa-user fa-4x" style="color: #936FCB;"></i></a>
+                        <h5 class="card-title">@usuario.Nome</h5>
+                        <p class="card-text"> @usuario.Email</p>
+                        <div class="d-grid gap-2 col-8 mx-auto">
+                            <a role="button" class="btn btn-primary btn-sm" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="Editar">Editar Informações</a>
+                            <a role="button" class="btn btn-danger btn-sm" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="ApagarConfirmacao">Excluir Conta</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Nenhum usuário encontrado.</p>
+        }
+    </div>
+</div>

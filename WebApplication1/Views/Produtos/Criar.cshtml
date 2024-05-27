@@ -1,0 +1,72 @@
+@model ProdutosModel
+@{
+    ViewData["Title"] = "Adicionar Produto";
+}
+
+<div class="d-flex justify-content-center align-items-center">
+  <div class="w-100" style="max-width: 500px;">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Adicionar Produto</h1>
+    </div>
+
+    <form asp-controller="Produtos" asp-action="Criar" method="post">
+      <div class="mb-3 text-start">
+        <label for="nome" class="custom-label">Nome</label>
+        <div class="d-flex justify-content-center align-items-center flex-column">
+          <input type="text" id="nome" asp-for="Nome" class="form-control w-75" placeholder="Digite o nome do produto">
+        </div>
+
+        <div class="custom-label">
+          @Html.ValidationMessageFor(x => x.Nome)
+        </div>
+      </div>
+
+      <div class="mb-3 text-start">
+        <label for="nome" class="custom-label">Preço</label>
+        <div class="d-flex justify-content-center align-items-center flex-column">
+          <input type="number" id="preco" step="0.01" asp-for="Preco"class="form-control w-75" placeholder="Digite o preço do produto">
+        </div>
+
+        <div class="custom-label">
+          @Html.ValidationMessageFor(x => x.Preco)
+        </div>
+      </div>
+
+      @{
+        var lojas = ViewBag.Lojas as List<LojaModel>;
+        if (lojas != null && lojas.Any())
+        {
+            <div class="mb-3 text-start">
+              <label for="loja" class="custom-label">Loja</label>
+              <div class="d-flex justify-content-center align-items-center flex-column">
+                <select id="loja" asp-for="LojaId" class="form-select w-75" asp-items="@(new SelectList(lojas, "Id", "Nome"))">
+                    <option value="">Selecione uma loja</option>
+                </select>
+              </div>
+
+              <div class="custom-label">
+                @Html.ValidationMessageFor(model => model.LojaId, "", new { @class = "text-danger" })
+              </div>
+            </div>
+            <input type="hidden" asp-for="UsuarioId"/>
+            <div class="d-flex justify-content-center mt-2">
+              <button type="submit" class="btn btn-primary btn-wide me-2">Adicionar</button>
+              <a class="btn btn-secondary btn-wide" asp-controller="Compras" asp-action="Index" role="button">Voltar</a>
+            </div>
+           
+        }
+        else
+        {
+          <div class="d-flex justify-content-center align-items-center flex-column">
+            <p>Nenhuma loja disponível. Por favor, adicione uma loja para selecionar.</p>
+          <a class="btn btn-secondary btn-wide" asp-controller="Compras" asp-action="Index" role="button">Voltar</a>
+          </div>
+        }
+      }
+    </form>
+  </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

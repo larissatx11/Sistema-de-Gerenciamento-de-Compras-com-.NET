@@ -1,0 +1,90 @@
+{	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "process",
+			"label": "build",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"${workspaceFolder}/WebApplication1.sln"
+			],
+			"problemMatcher": "$msCompile",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "Build the WebApplication1.sln solution using dotnet build"
+		},
+		{
+			"type": "java (build)",
+			"paths": [
+				"${workspace}"
+			],
+			"isFullBuild": true,
+			"group": "build",
+			"problemMatcher": [],
+			"label": "java (build): Build Workspace",
+			"detail": "$(tools) Build all the Java projects in workspace."
+		},
+		{
+			"type": "docker-build",
+			"label": "docker-build: debug",
+			"dependsOn": [
+				"build"
+			],
+			"dockerBuild": {
+				"tag": "trabalho4:dev",
+				"target": "base",
+				"dockerfile": "${workspaceFolder}/WebApplication1/Dockerfile",
+				"context": "${workspaceFolder}",
+				"pull": true
+			},
+			"netCore": {
+				"appProject": "${workspaceFolder}/WebApplication1/WebApplication1.csproj"
+			}
+		},
+		{
+			"type": "docker-build",
+			"label": "docker-build: release",
+			"dependsOn": [
+				"build"
+			],
+			"dockerBuild": {
+				"tag": "trabalho4:latest",
+				"dockerfile": "${workspaceFolder}/WebApplication1/Dockerfile",
+				"context": "${workspaceFolder}",
+				"platform": {
+					"os": "linux",
+					"architecture": "amd64"
+				},
+				"pull": true
+			},
+			"netCore": {
+				"appProject": "${workspaceFolder}/WebApplication1/WebApplication1.csproj"
+			}
+		},
+		{
+			"type": "docker-run",
+			"label": "docker-run: debug",
+			"dependsOn": [
+				"docker-build: debug"
+			],
+			"dockerRun": {},
+			"netCore": {
+				"appProject": "${workspaceFolder}/WebApplication1/WebApplication1.csproj",
+				"enableDebugging": true
+			}
+		},
+		{
+			"type": "docker-run",
+			"label": "docker-run: release",
+			"dependsOn": [
+				"docker-build: release"
+			],
+			"dockerRun": {},
+			"netCore": {
+				"appProject": "${workspaceFolder}/WebApplication1/WebApplication1.csproj"
+			}
+		}
+	]
+}

@@ -1,0 +1,90 @@
+@model LoginModel
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Login";
+}
+
+<br />
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+
+<br />
+
+<body class="login-page-background">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 text-center">
+            <img src="~/images/login2.png" class="img-fluid" alt="Login Image">
+        </div>
+        <div class="col-md-6">
+            <div class="w-100" style="max-width: 500px; margin: auto;">
+                <form asp-controller="Login" asp-action="Entrar" method="post">
+                    <div class="mb-3 text-start">
+                        <div class="d-flex justify-content-center"> 
+                          <h1 class="display-4">Login</h1>
+                        </div>
+                        <label for="exampleInputEmail1" class="custom-label">E-mail</label>
+                        <div class="d-flex justify-content-center align-items-center flex-column">
+                           <input type="email" asp-for="Email" class="form-control w-75" id="exampleInputEmail1" placeholder="Digite o e-mail">
+                        </div>
+                       
+                        <div class="custom-label">
+                            @Html.ValidationMessageFor(x => x.Email)
+                        </div>
+                    </div>
+
+                    <div class="mb-3 text-start">
+                        <label for="exampleInputPassword1" class="custom-label">Senha</label>
+                        <div class="d-flex justify-content-center align-items-center flex-column">
+                          <input type="password" asp-for="Senha" class="form-control w-75" id="exampleInputPassword1" placeholder="Digite a senha">
+                        </div>
+                        
+                        <div class="custom-label">
+                            @Html.ValidationMessageFor(x => x.Senha)
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center flex-column">
+                        <button type="submit" class="btn btn-primary btn-wide mb-3">Entrar</button>
+                        <p>Não tem conta? <a asp-controller="Cadastrar" asp-action="Criar">Clique aqui para cadastrar</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Styles {
+    <style>
+        .custom-label {
+            width: 100%;
+            text-align: left;
+        }
+
+        .btn-wide {
+            width: 100%;
+        }
+
+        .min-vh-100 {
+            min-height: 100vh;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+}

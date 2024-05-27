@@ -1,0 +1,182 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #564A93;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.field-validation-error {
+  color: #e01d1d
+}
+
+.close-alert {
+  position: absolute;
+  right: -10px;
+  top: -15px;
+  border-radius: 15px;
+  width: 30px;
+  height: 31px;
+}
+
+.display-4{
+  color: #936FCB;
+  margin-bottom: 20px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #936FCB;
+  border-color: #8765bd;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #564A93;
+  border-color: #4f4874;
+}
+
+.form-control {
+  width: 500px;
+}
+
+.full-height {
+  height: 10vh;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.custom-label {
+  margin-left: 65px; /* Ajuste o valor conforme necessário */
+}
+
+.btn-wide {
+  width: 100%;
+  max-width: 100px; /* Ajuste conforme necessário */
+}
+
+.custom-navbar {
+  background-color: #ffffff; /* Altere para a cor desejada */
+  color: #936FCB; /* Altere a cor do texto, se necessário */
+}
+
+.custom-navbar .nav-link {
+  color: #936FCB; /* Cor dos links na navbar */
+}
+
+.navbar-brand {
+  color: #936FCB !important;
+}
+
+.nav-link {
+  color: #936FCB !important;
+}
+
+.navbar-toggler-icon {
+  color: #936FCB !important;
+}
+
+.nav-link.active, .nav-link:focus, .nav-link:hover {
+  font-weight: bold;
+}
+
+.table thead th {
+  background-color: #B08EE6;
+  color: #ffffff;
+}
+
+/* Estilo para a tabela */
+.table-bordered {
+  background-color: #fffefe; /* Cor de fundo da tabela */
+  border-radius: 15px; /* Ajuste o valor conforme necessário */
+  overflow: hidden; /* Necessário para aplicar o arredondamento aos cantos internos */
+}
+
+.profile-img {
+  width: 100px; /* Ajuste o tamanho da imagem conforme necessário */
+  height: 100px; /* Ajuste o tamanho da imagem conforme necessário */
+  object-fit: cover;
+}
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px; /* Ajuste o padding conforme necessário */
+}
+
+a {
+  color: #7c68e0;
+}
+
+a:hover {
+  color: #6350be;
+}
+
+.cadastro-page-background {
+  background-image: url('/images/fundo_cadastro9.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page-background {
+  background-image: url('/images/fundo_login.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-width {
+  width: 100%;
+}
+
+.form-label {
+  margin-bottom: 0px;
+}
+
+.footer-text {
+  color: #936FCB;
+  text-align: center; /* Centraliza o texto */
+}
+
+.footer {
+  position: absolute;
+  padding: 8px 0; 
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+  background-color: #ffffff;
+}

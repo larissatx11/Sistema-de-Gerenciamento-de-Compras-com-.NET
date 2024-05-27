@@ -1,0 +1,55 @@
+@model List<LojaModel>
+@{
+    ViewData["Title"] = "Lista de Lojas";
+}
+<div class="text-center">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary ms-auto rounded-lg" role="button" asp-controller="Loja" asp-action="Criar">Adicionar nova Loja</a>
+    </div>
+
+    <br />
+    @if(TempData["MensagemSucesso"] != null){
+        <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if(TempData["MensagemErro"] != null){
+        <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+         @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Lista de Lojas</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Endereço</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null && Model.Any()){
+                foreach(LojaModel loja in Model){
+                    <tr>
+                        <th scope="row">@loja.Id</th>
+                        <td>@loja.Nome</td>
+                        <td>@loja.Endereco</td>
+                        <td>
+                            <div class="d-grid gap-2 d-md-block">
+                                <a role="button" class="btn btn-primary" asp-route-id="@loja.Id" asp-controller="Loja" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@loja.Id" asp-controller="Loja" asp-action="ApagarConfirmacao">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
