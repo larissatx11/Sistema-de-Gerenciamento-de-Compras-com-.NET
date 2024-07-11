@@ -15,7 +15,7 @@ Este projeto é uma aplicação ASP.NET Core MVC que implementa um CRUD completo
   <li><h3 style="display: inline;">Telas de Login e Cadastro</h3></li>
 </ul>
 <div style="display: flex; flex-wrap: wrap;">
-  <img src="./Capturas%20TD4/Tela_Login.PNG" alt="Tela de Login" width="700" style="margin-right: 10px;"/>
+  <img src="./Capturas%20TD4/Tela_Login.PNG" alt="Tela de Login" style="margin-right: 10px;"/>
   <img src="./Capturas%20TD4/Tela_Cadastro.PNG" alt="Tela de Cadastro" width="700"/>
 </div>
 
