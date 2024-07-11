@@ -1,6 +1,6 @@
 # Projeto de Gerenciamento de Lojas, Produtos e Compras
 ## Introdução
-Este projeto é uma aplicação ASP.NET Core MVC que implementa um CRUD completo para lojas, produtos, compras e usuário.
+Este projeto é uma aplicação ASP.NET Core MVC que implementa um CRUD completo para lojas, produtos, compras e usuário. Além disso, possui um DockerFile para compilar o projeto via Docker.
 
 ## Tabela de Conteúdos
 - [Login e Cadastro de Usuário](#login-e-cadastro-de-usuário)
